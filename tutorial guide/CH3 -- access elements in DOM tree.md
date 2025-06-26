@@ -37,6 +37,7 @@ it will search for its sibling or parent, etc, including
 
   - `Multiple Selector`
   - `Descendant Selector`
+  - `Child Selector`
   
 Here are common query selector that be used in jQuery.
 
@@ -47,8 +48,8 @@ Here are common query selector that be used in jQuery.
 | `Element Selector` | `$("<tag-name>")` | tag name | select all elements by tag name `<tag-name>` | | `$("p")`| select all elements whose tag name is `<p>` |
 | `Universal Selector` | `$("*")` | all elements | select all elements in the document | | | |
 | `Multiple Selector` | `$("<sub-query-selector1>,<sub-query-selector2>")` and more | an array of sub-query selector | select all elements that<br>satisfies one of `<sub-query-selector1>` and `<sub-query-selector2>` | the return value of `$("<sub-query-selector1>,<sub-query-selector2>")` is equivalent to the result of combining the return value of `$("<sub-query-selector1>")` and $("<sub-query-selector2>")  | `$("h1,p, .footer")`| select all elements whose tag is one of `<h1>`, `<p>` |
-| ` Selector` | `$("*")` | all elements | select all elements in the document | | | | 
-| `Descendant Selector` | `$("<sub-query-selector1> <sub-query-selector2>")` and more | | select all elements that satisfies `<sub-query-selector1>`.<br>In these element select all elements that satisfies `<sub-query-selector2>` | | `$("#animation .Japanese .spyXfamily")` | select all elements by id `animation`. In these elements, select all elements by class containing `Japanese`. Then select all elements by class containing `spyXfamily`  | 
+| `Child Selector`| `$("<sub-query-selector1> > <sub-query-selector2>")` and more | | select all elements that satisfies `<sub-query-selector1>`.<br>In these elements, select all direcly children elements that satisfies `<sub-query-selector2>` | `$("#animation .Japanese")` | select all elements by id `animation`. In these elements, select all descendant elements by class containing `Japanese`. | 
+| `Descendant Selector` | `$("<sub-query-selector1> <sub-query-selector2>")` and more | | select all elements that satisfies `<sub-query-selector1>`.<br>In these elements, select all descendant elements that satisfies `<sub-query-selector2>` | | `$("#animation .Japanese .spyXfamily")` | select all elements by id `animation`. In these elements, select all descendant elements by class containing `Japanese`. Then select all descendant elements by class containing `spyXfamily` | 
 
 ## reference
 
