@@ -40,7 +40,6 @@ it will search for its sibling or parent, etc, including
   - `Child Selector`
   - `Next Adjacent Selector`
   - `Sibling Selector`
-  - `Content Filter Selectors`
 
 + Attribute Selectors
 
@@ -50,6 +49,22 @@ a selector that search for specified attribute(s).
 + Basic Filter Selectors:
 
 It allows for more refined selection based on position or state.
+
++ Content Filter Selectors:
+
+used to filter content 
+  
++ Visibility Filter Selectors:
+
+used to filter the visibility
+
++ Form Selectors:
+
+used for all elements about form.
+
++ Form State Selectors:
+
+used for form state.
 
 Here are common query selector that be used in jQuery.
 
@@ -79,12 +94,28 @@ Here are common query selector that be used in jQuery.
  `$(".Japanese:gt(5)")` | select all elements which index is greater than 5 (i.e. 5th,6th,7th,...) by class containing **exactly word** `Japanese` |
 | `Basic Filter Selectors` | `$("<sub-query-selector>:lt(<n>)")` | | select all elements (which index is less than `<n>` **(zero-based)**) satisfying `<sub-query-selector>` | | `$(".Japanese:lt(5)")` | select all elements which index is less than 5 (i.e. 0th,1th,2th,3th,4th) by class containing **exactly word** `Japanese` |
 | `Basic Filter Selectors` | `$("<sub-query-selector>:not(<excluded-sub-query-selector>)")` | | select all elements satisfying `<sub-query-selector>` but NOT satisifying `<excluded-sub-query-selector>` | | `$("p:not(.Japanese)")` | select all `<p>` elements but exclude the class containing **exactly word** `Japanese` |
-| `Basic Filter Selectors` | `$("<sub-query-selector>:header)")` | | select all elements satisfying `<sub-query-selector>` and it's a heading `<h1>` to `<h6>` | | `$(".Japanese:hear")` | select all `<h1>` to `<h6>` elements and its class containing **exactly word** `Japanese` |
-| `Basic Filter Selectors` | `$("<sub-query-selector>:animated)")` | | select all elements satisfying `<sub-query-selector>` that are currently being animated | | `$(".Japanese:animated")` | select all elements whose class containing **exactly word** `Japanese` and the elements are currently being animated.  |
-| `Content Filter Selectors` | `$("<sub-query-selector>:contains(<text>))")` | | select all elements satisfying `<sub-query-selector>` whose `innerHTML` contains `<text>` | | `$("p:contains("AI")")` | select all `<p>` elements satisfying whose `innerHTML` contains `AI` |
-
-
-
+| `Basic Filter Selectors` | `$("<sub-query-selector>:header")` | | select all elements satisfying `<sub-query-selector>` and it's a heading `<h1>` to `<h6>` | | `$(".Japanese:head")` | select all `<h1>` to `<h6>` elements and its class containing **exactly word** `Japanese` |
+| `Basic Filter Selectors` | `$("<sub-query-selector>:animated")` | | select all elements satisfying `<sub-query-selector>` that are currently being animated | | `$(".Japanese:animated")` | select all elements whose class containing **exactly word** `Japanese` and the elements are currently being animated.  |
+| `Content Filter Selectors` | `$("<sub-query-selector>:contains(<text>)")` | | select all elements satisfying `<sub-query-selector>` whose `innerHTML` contains `<text>` | | `$("p:contains("AI")")` | select all `<p>` elements whose `innerHTML` contains `AI` |
+| `Content Filter Selectors` | `$("<sub-query-selector>:empty")` | | select all elements satisfying `<sub-query-selector>` without any children and no `innerHTML` (or said its innerHTML is empty string `""` | | `$("div:empty")` | select all `<div>` elements without any children and no `innerHTML` (or said its innerHTML is empty string `""` |
+| `Content Filter Selectors` | `$("<sub-query-selector1>:has(<sub-query-selector2)")` | | select all elements satisfying `<sub-query-selector1>`,<br>which has at least one children satisfying `<sub-query-selector2>` | | `$("div:has(p)")` | select all `<div>` elements which has at least one `<p>` element |
+| `Visibility Filter Selectors` | `$("<sub-query-selector1>:hidden")` | | select all elements satisfying `<sub-query-selector1>`,<br>which are invisible | see below | `$("p:hidden")` | select all `<p>` elements which are invisible |
+| `Visibility Filter Selectors` | `$("<sub-query-selector1>:visible")` | | select all elements satisfying `<sub-query-selector1>`,<br>which are visible | see below | `$("p:visible")` | select all `<p>` elements which are visible |
+| `Form Selectors` | `$("<sub-query-selector1>:input")` | | select all `<input>`, `<textarea>`, `<select>`, and `<button>` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:input")` | select all `<input>`, `<textarea>`, `<select>`, and `<button>` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:text")` | | select all `<input type="text">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:text")` | select all `<input type="text">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:password")` | | select all `<input type="password">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:password")` | select all `<input type="password">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:radio")` | | select all `<input type="radio">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:radio")` | select all `<input type="radio">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:checkbox")` | | select all `<input type="radio">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:checkbox")` | select all `<input type="checkbox">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:submit")` | | select all `<input type="submit">` and `<button type="submit">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:submit")` | select all `<input type="submit">`and `<button type="submit">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:image")` | | select all `<input type="image">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:image")` | select all `<input type="image">`and elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:reset")` | | select all `<input type="reset">` and `<button type="reset">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:reset")` | select all `<input type="reset">`and `<button type="reset">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:button")` | | select all `<input type="button">` and `<button type="button">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:button")` | select all `<input type="button">`and `<button type="button">` elements under the all `<div>` elements |
+| `Form Selectors` | `$("<sub-query-selector1>:file")` | | select all `<input type="file">` elements under the element satisfying `<sub-query-selector1>`  | | `$("div:file")` | select all `<input type="file">` elements under the all `<div>` elements |
+| `Form State Selectors` | `$("<sub-query-selector1>:enabled")` | | select all elements, satisfying `<sub-query-selector1>`, and its children which are enabled  | | `$(".form1 :enabled")` | select all elements by class name `form1` and its descendants which are enabled. |
+| `Form State Selectors` | `$("<sub-query-selector1>:disabled")` | | select all elements, satisfying `<sub-query-selector1>`, and its children which are disabled  | | `$(".form1 :disabled")` | select all elements by class name `form1` and its descendants which are disabled. |
+| `Form State Selectors` | `$("<sub-query-selector1>:checked")` | | select all elements (for radio button and checkboxs), satisfying `<sub-query-selector1>` which are checked. | | `$(":checked")` | select all elements (for radio button and checkboxs) which are checked. |
+| `Form State Selectors` | `$("<sub-query-selector1>:selected")` | | select all `<option>` elements (under `<select>`), satisfying `<sub-query-selector1>` which are selected. | | `$(":selected")` | select all `<option>` elements (under `<select>`) which are selected. |
 
 ## reference
-
+### Google Gemini
++ [Google Gemini's respones -- Selector in jQuery ](https://g.co/gemini/share/556d52f3a331)
