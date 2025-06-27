@@ -85,7 +85,8 @@ Here are common query selector that be used in jQuery.
 | `Attribute Selectors` | `$("[<attribute>$='<value>']")` | | select all elements that has `<attribute>` attribute and its value ends with `<value>` | | `$("[img$='.jpg']")` | select all elements that has `img` attribute and its value ends with `.jpg` |
 | `Attribute Selectors` | `$("[<attribute>*='<value>']")` | | select all elements that has `<attribute>` attribute that its value containing `<value>` | In this example, assume that class="reddit", then the element will be found.  | `$("[class*='red']")` | select all elements whose class containing `red` **(NOT NECESSARY be a word)** |
 | `Attribute Selectors` | `$("[<attribute>!='<value>']")` | | select all elements that has `<attribute>` attribute and<br>satisfying one of requirements:<ol><li>the attribute has no value specified</li><li>the attribute's value is NOT same as `<value>`</li></ol> | | `$("[href!='https://www.youtube.com/']")` | select all elements has the `href` attribute and its value is NOT equal to `https://www.youtube.com/` or is missing |
-| `Basic Filter Selectors` | `$("<sub-query-selector>:first")` | | select first element satisfying `<sub-query-selector>` | | `$(".Japanese:first")` | select first element by class containing **exactly word** `Japanese` |
+| `Basic Filter Selectors` | `$("<sub-query-selector>:first")` | | select first element satisfying `<sub-query-selector>` | will always return a single element (null, it is no matched result) | `$(".Japanese:first")` | select first element by class containing **exactly word** `Japanese` |
+| `Basic Filter Selectors` | `$("<sub-query-selector>:first-child")` | | select directly first children for each element in all elements satisfying `<sub-query-selector>` | will always return an array of elements (empty array, it is no matched result) | `$(".Japanese:first-child")` | select directly first children for each element in all elements by class containing **exactly word** `Japanese` |
 | `Basic Filter Selectors` | `$("<sub-query-selector>:last")` | | select last element satisfying `<sub-query-selector>` | | `$(".Japanese:last")` | select last element by class containing **exactly word** `Japanese` |
 | `Basic Filter Selectors` | `$("<sub-query-selector>:even")` | | select even-index **(zero-based)** elements satisfying `<sub-query-selector>` | | `$(".Japanese:even")` | select the 0th, 2th, 4th etc elements by class containing **exactly word** `Japanese` |
 | `Basic Filter Selectors` | `$("<sub-query-selector>:odd")` | | select odd-index **(zero-based)** elements satisfying `<sub-query-selector>` | | `$(".Japanese:odd")` | select the 1th, 3th, 5th etc elements by class containing **exactly word** `Japanese` |
@@ -115,6 +116,71 @@ Here are common query selector that be used in jQuery.
 | `Form State Selectors` | `$("<sub-query-selector1>:disabled")` | | select all elements, satisfying `<sub-query-selector1>`, and its children which are disabled  | | `$(".form1 :disabled")` | select all elements by class name `form1` and its descendants which are disabled. |
 | `Form State Selectors` | `$("<sub-query-selector1>:checked")` | | select all elements (for radio button and checkboxs), satisfying `<sub-query-selector1>` which are checked. | | `$(":checked")` | select all elements (for radio button and checkboxs) which are checked. |
 | `Form State Selectors` | `$("<sub-query-selector1>:selected")` | | select all `<option>` elements (under `<select>`), satisfying `<sub-query-selector1>` which are selected. | | `$(":selected")` | select all `<option>` elements (under `<select>`) which are selected. |
+
+## examples
+### example 1
+
+```
+<document>
+    <div id="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>SpyXFamily</th>
+                    <th>Japanese Animation</th>
+                    <th>Unknown</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</document>
+```
+
+To find all tables, one can use
+
+```
+$("table");
+```
+
+### example 2
+
+```
+<document>
+    <div id="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>SpyXFamily</th>
+                    <th>Japanese Animation</th>
+                    <th>Unknown</th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</document>
+```
+
+To find an Japanese Animation -- `SpyXFamily` from a table, one can use
+
+```
+let someTrElements = $("th").filter(function(){
+    return $(this).innerHTML == "SpyXFamily"
+}); 
+```
 
 ## reference
 ### Google Gemini
