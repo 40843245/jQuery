@@ -119,3 +119,6 @@ Here are common query selector that be used in jQuery.
 ## reference
 ### Google Gemini
 + [Google Gemini's respones -- Selector in jQuery ](https://g.co/gemini/share/556d52f3a331)
+
+### Offical docs
++ [`Selectors`](https://api.jquery.com/category/selectors/)
